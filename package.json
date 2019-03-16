@@ -1,0 +1,17 @@
+{
+  "name": "securitytester",
+  "version": "1.0.0",
+  "description": "BackEnd for site",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Navid Farahmand",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "http-errors": "^1.7.2",
+    "serve-favicon": "^2.5.0"
+  }
+}
