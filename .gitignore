@@ -4,3 +4,5 @@ package-lock.json
 /node_modules
 #front End
 /public
+#https
+/configs/https
