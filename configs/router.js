@@ -1,10 +1,11 @@
 var router = {
- controllers : "../controllers/",
+ controllers : "../controllers",
+ app:"App",
+ admin:"Admin",
  prefix : "/api",
-add:function(app){
+ add:function(app){
   var path = require('path');
-  // app.use(this.prefix+'/user',require(this.controllers+'UserController'));
-  app.use(this.prefix+'/app/pageContent',require(path.join(this.controllers,'App','PageContentController')));
-}
+  app.use(this.prefix+'/app/pageContent',require(path.join(this.controllers,this.app,"PageContent",'PageContentController')));
+  }
 };
 module.exports = router;
