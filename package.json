@@ -4,13 +4,14 @@
   "description": "BackEnd for site",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "forever --minUptime=1000 --spinSleepTime=1000 -w main.js"
   },
   "author": "Navid Farahmand",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "forever": "^0.15.3",
     "http-errors": "^1.7.2",
     "serve-favicon": "^2.5.0"
   }
