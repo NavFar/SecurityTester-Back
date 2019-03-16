@@ -1,3 +1,22 @@
 {
-"":"",
+"ipInputPlaceHolder": "نام دامنه یا ای‌پی ",
+"test": "ارزیابی",
+"exposeText": "نتایج این ارزیابی برای عموم قابل مشاهده نباشد.",
+"send":"ارسال",
+"name":"نام ونام خانوادگی",
+"email":"ایمیل",
+"phone":"شماره تلفن",
+"subject":"موضوع",
+"text":"متن پیام",
+"questionTitle":"سوال",
+"answerTitle":"پاسخ",
+"usernamePlaceHolder":"نام کاربری",
+"passwordPlaceHolder":"گذرواژه",
+"login":"ورود",
+"loginTitle":"ورود کاربر",
+"homePage":"صفحه نخست",
+"faq":"سوالات رایج",
+"recent":"ارزیابی‌های اخیر",
+"aboutUs":"درباره ما",
+"contactUs":"تماس و پشتیبانی"
 }
