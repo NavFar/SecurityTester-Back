@@ -6,6 +6,8 @@ var router = {
  add:function(app){
   var path = require('path');
   app.use(this.prefix+'/app/pageContent',require(path.join(this.controllers,this.app,"PageContent",'PageContentController')));
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  app.use(this.prefix+'/admin',require(path.join(this.controllers,this.admin,"UserController")));
   }
 };
 module.exports = router;

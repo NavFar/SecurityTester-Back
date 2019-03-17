@@ -1,5 +1,6 @@
+var path = require('path');
 var https ={
-  key:"./https/domain.key",
-  certification:"./https/domain.cert"
+  key: path.join(__dirname,"https/domain.key"),
+  certification: path.join(__dirname,"https/domain.crt"),
 };
 module.exports = https;
