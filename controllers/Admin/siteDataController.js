@@ -15,6 +15,7 @@ siteData.findOne({},(err,data)=>{
   return res.status(200).json(data.moto);
   });
 });
+
 router.post("/setMoto",function(req,res){
 siteData.findOne({},(err,data)=>{
   if(err)
@@ -24,16 +25,45 @@ siteData.findOne({},(err,data)=>{
     if(error)
       return res.status(500).send();
     return res.status(200).send();
+    });
   });
 });
 
+router.post("/getIntroduction",function(req,res){
+
+
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  return res.status(200).json(data.introduction);
+  });
+});
+
+router.post("/setIntroduction",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  data.introduction=req.body.introduction;
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
 });
 module.exports = router;
+
+
+
 // siteData.create(
 //       {
 //         moto:{
 //           show:true,
-//           content:""
-//         }
+//           content:"",
+//         },
+//           introduction:{
+//             show:true,
+//             content:"",
+//           }
 //       }
 // ,(err,temp)=>{});
