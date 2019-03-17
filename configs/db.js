@@ -1,7 +1,7 @@
 var db={
-  name:"",
-  url:"",
-  port:""
+  name:"securityTester",
+  url:"localhost",
+  port:"27017"
 
 };
 module.exports = db;
