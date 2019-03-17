@@ -4,6 +4,10 @@ var siteDataSchema = new  mongoose.Schema({
       show:Boolean,
       content:String,
     },
+    introduction:{
+      show:Boolean,
+      content:String,
+    },
 });
 mongoose.model('SiteData',siteDataSchema);
 module.exports =mongoose.model('SiteData');
