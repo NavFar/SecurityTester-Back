@@ -1,6 +1,9 @@
 var mongoose =require('mongoose');
 var siteDataSchema = new  mongoose.Schema({
-
+    moto:{
+      show:Boolean,
+      content:String,
+    },
 });
 mongoose.model('SiteData',siteDataSchema);
 module.exports =mongoose.model('SiteData');
