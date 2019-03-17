@@ -18,6 +18,7 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^8.5.0",
     "mongoose": "^5.4.19",
+    "request": "^2.88.0",
     "serve-favicon": "^2.5.0"
   }
 }
