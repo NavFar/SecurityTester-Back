@@ -23,5 +23,8 @@
 "emptyPassword":"رمزعبور وارد نشده است",
 "emptyRecaptch":"تصویر امنیتی وارد نشده است",
 "successLogin" :"ورود موفقیت امیز",
-"failedLogin" :"عدم موفقیت در ورود"
+"failedLogin" :"رمزعبور یا نام کاربری نادرست",
+"recaptchaFaild":"تصویر امنیتی درست نیست",
+"serveFailed":"مشکل سرور",
+"waiting":"در انتظار پاسخ"
 }
