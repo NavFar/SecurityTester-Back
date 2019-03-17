@@ -37,10 +37,13 @@ router.post("/login",(req,res)=>{
             var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
             if (!passwordIsValid)
               return res.status(401).send();
-           var token = jwt.sign({ username: req.body.username }, jwtPrivate, {algorithm: 'RS256',expiresIn: 86400 });
+           var token = jwt.sign({ id: user._id }, jwtPrivate, {algorithm: 'RS256',expiresIn: jwtConfig.expire });
            return res.status(200).json({ token: token });
-             });      
+             });
    });
+  });
+  router.post("/username",(req,res)=>{
+        return res.status(200).json(res.locals.user.username);
   });
 // router.post("/register",(req,res)=>{
 //   if(!req.body.username || !req.body.password|| !req.body.recaptcha)
