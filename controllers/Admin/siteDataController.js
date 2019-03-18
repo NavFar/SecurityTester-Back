@@ -113,6 +113,27 @@ siteData.findOne({},(err,data)=>{
     });
   });
 });
+
+router.post("/getFooter",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  return res.status(200).json(data.footer);
+  });
+});
+
+router.post("/setFooter",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  data.footer=req.body.footer;
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
+});
 module.exports = router;
 // siteData.create(
 //       {
@@ -133,6 +154,10 @@ module.exports = router;
 //           destination:"",
 //         },
 //         copyright:{
+//           show:true,
+//           content:"",
+//         },
+//         footer:{
 //           show:true,
 //           content:"",
 //         },
