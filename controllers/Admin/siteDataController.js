@@ -30,8 +30,6 @@ siteData.findOne({},(err,data)=>{
 });
 
 router.post("/getIntroduction",function(req,res){
-
-
 siteData.findOne({},(err,data)=>{
   if(err)
     return res.status(500).send();
@@ -51,19 +49,41 @@ siteData.findOne({},(err,data)=>{
     });
   });
 });
+
+router.post("/getTitle",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  return res.status(200).json(data.title);
+  });
+});
+
+router.post("/setTitle",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  data.title=req.body.title;
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
+});
+
 module.exports = router;
-
-
-
 // siteData.create(
 //       {
 //         moto:{
 //           show:true,
 //           content:"",
 //         },
-//           introduction:{
-//             show:true,
-//             content:"",
-//           }
+//         introduction:{
+//           show:true,
+//           content:"",
+//         },
+//         title:{
+//           content:"",
+//         },
 //       }
-// ,(err,temp)=>{});
+//       ,(err,temp)=>{});
