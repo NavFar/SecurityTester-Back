@@ -92,6 +92,27 @@ siteData.findOne({},(err,data)=>{
     });
   });
 });
+
+router.post("/getCopyright",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  return res.status(200).json(data.copyright);
+  });
+});
+
+router.post("/setCopyright",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  data.copyright=req.body.copyright;
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
+});
 module.exports = router;
 // siteData.create(
 //       {
@@ -110,6 +131,10 @@ module.exports = router;
 //           show:true,
 //           url:"",
 //           destination:"",
+//         },
+//         copyright:{
+//           show:true,
+//           content:"",
 //         },
 //       }
 //       ,(err,temp)=>{});

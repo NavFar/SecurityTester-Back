@@ -16,6 +16,10 @@ var siteDataSchema = new  mongoose.Schema({
       url:String,
       destination:String,
     },
+    copyright:{
+      show:Boolean,
+      content:String,
+    },
 });
 mongoose.model('SiteData',siteDataSchema);
 module.exports =mongoose.model('SiteData');
