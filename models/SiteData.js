@@ -28,6 +28,10 @@ var siteDataSchema = new  mongoose.Schema({
       show:Boolean,
       content:String,
     },
+    contactUs:{
+      show:Boolean,
+      content:String,
+    },
 });
 mongoose.model('SiteData',siteDataSchema);
 module.exports =mongoose.model('SiteData');
