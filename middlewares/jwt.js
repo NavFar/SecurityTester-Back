@@ -1,5 +1,7 @@
 module.exports = function(req,res,next)
 {
+if(req.url=="/login/")
+  return next();
 var fs= require('fs');
 var express = require('express');
 var router = express.Router();
@@ -29,8 +31,9 @@ if(token)
           next();
       });
     }
-    else
+    else{
       res.status(401).send();
+    }
   });
 }
 else
