@@ -11,6 +11,11 @@ var siteDataSchema = new  mongoose.Schema({
     title:{
       content:String,
     },
+    logo:{
+      show:Boolean,
+      url:String,
+      destination:String,
+    },
 });
 mongoose.model('SiteData',siteDataSchema);
 module.exports =mongoose.model('SiteData');
