@@ -6,6 +6,7 @@ var router = {
  add:function(app){
   var path = require('path');
   app.use(this.prefix+'/app/pageContent',require(path.join(this.controllers,this.app,"PageContent",'PageContentController')));
+  app.use(this.prefix+'/app/siteData',require(path.join(this.controllers,this.app,'SiteDataController')));
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //add middleware to handle jwt
   var jwtMiddleware = require('../middlewares/jwt.js');
