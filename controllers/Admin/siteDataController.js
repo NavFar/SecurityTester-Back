@@ -134,7 +134,30 @@ siteData.findOne({},(err,data)=>{
     });
   });
 });
+
+router.post("/getAboutUs",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  return res.status(200).json(data.aboutUs);
+  });
+});
+
+router.post("/setAboutUs",function(req,res){
+siteData.findOne({},(err,data)=>{
+  if(err)
+    return res.status(500).send();
+  data.aboutUs=req.body.aboutUs;
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
+});
 module.exports = router;
+
+
 // siteData.create(
 //       {
 //         moto:{
@@ -158,6 +181,10 @@ module.exports = router;
 //           content:"",
 //         },
 //         footer:{
+//           show:true,
+//           content:"",
+//         },
+//         aboutUs:{
 //           show:true,
 //           content:"",
 //         },
