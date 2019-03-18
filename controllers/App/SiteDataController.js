@@ -8,7 +8,6 @@ router.post("/",(req,res)=>{
     if(err)
       return res.status(500).send();
     var responseData={};
-    console.log(data)
     if(data.moto.show)
       responseData.moto=data.moto.content;
     else
