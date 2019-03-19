@@ -13,7 +13,7 @@ var router = {
   app.use(this.prefix+'/admin',jwtMiddleware)
   //actual routes
   app.use(this.prefix+'/admin',require(path.join(this.controllers,this.admin,"UserController")));
-  app.use(this.prefix+'/admin/siteData/',require(path.join(this.controllers,this.admin,"siteDataController")));
+  app.use(this.prefix+'/admin/siteData/',require(path.join(this.controllers,this.admin,"SiteDataController")));
 
   }
 };
