@@ -1,11 +1,12 @@
 var request = require('request');
+var recaptchaConfig = require('../../configs/recaptcha');
 
-var checker = function(serverAddress,secretKey,recaptchaResponse,remoteIp,err,next){
-  request.post({url:serverAddress,
+var checker = function(recaptchaResponse,err,next){
+  request.post({url:recaptchaConfig.server,
       form: {
-        secret:secretKey,
+        secret:recaptchaConfig.secret,
         response:recaptchaResponse,
-        remoteip:remoteIp
+        remoteip:recaptchaConfig.address
       }},
       function(error,response,body){
         if(error){

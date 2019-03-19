@@ -17,7 +17,7 @@ router.post("/login",(req,res)=>{
   if(!req.body.username || !req.body.password|| !req.body.recaptcha)
       return res.status(400).send();
   //Recaptcha check
-  recaptchaChecker(recaptchaConfig.server,recaptchaConfig.secret,req.body.recaptcha,recaptchaConfig.server,
+  recaptchaChecker(req.body.recaptcha,
     function(){
       return res.status(503).send();
     },function(){
