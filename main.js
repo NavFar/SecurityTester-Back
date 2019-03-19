@@ -24,8 +24,8 @@ mongoose.connect('mongodb://'+dbConfig.url+':'+dbConfig.port+'/'+dbConfig.name,{
 //serve front-end files
 app.use(express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester"));
 app.use("*",express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester/index.html"));
-// app.use(express.static(path.join(__dirname, "public")));
-// app.use("*",express.static(path.join(__dirname, "public","index.html")));
+// app.use(express.static(serverConfig.publicDirectoryLocation));
+// app.use("*",express.static(path.join(serverConfig.publicDirectoryLocation,"index.html")));
 //Enable https for server
 var httpsServer= https.createServer(credentials,app);
 // start Server
