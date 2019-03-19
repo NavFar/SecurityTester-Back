@@ -8,7 +8,6 @@ var bcrypt = require('bcrypt');
 var jwtConfig = require('../../configs/jwt');
 var jwtPrivate = fs.readFileSync(jwtConfig.private);
 var User = require('../../models/User');
-var recaptchaConfig = require('../../configs/recaptcha');
 var recaptchaChecker = require('../Shared/RecaptchaChecker');
 
 router.use(bodyParser.urlencoded({ extended: true }));
