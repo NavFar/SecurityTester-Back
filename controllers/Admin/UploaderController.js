@@ -3,10 +3,6 @@ var fs = require('fs');
 var path = require('path');
 var router = express.Router();
 var serverConfig = require('../../configs/server');
-var bodyParser = require('body-parser');
-
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
 function getFileContent(fileName){
   var files = fs.readdirSync(path.join(serverConfig.publicDirectoryLocation,fileName));
   var response=[];
@@ -28,5 +24,18 @@ function getFileContent(fileName){
 }
 router.post("/getDirectoryContent",function(req,res){
   return res.status(200).json(getFileContent("/"));
+});
+router.post("/upload",function(req,res){
+  var filePath =  path.join(serverConfig.publicDirectoryLocation,req.body.basePath,req.body.name);
+  if(!req.body.override && fs.existsSync(filePath)){
+    return res.status(409).send();
+  }
+  var base64File = req.body.file.replace(/^data:.*;base64,/, "");
+  fs.writeFile(filePath, base64File, 'base64', function(err) {
+    if(err){
+      return res.status(409).json("");
+    }
+    return res.status(200).json("");
+  });
 });
 module.exports = router;

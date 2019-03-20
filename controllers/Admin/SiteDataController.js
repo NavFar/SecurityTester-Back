@@ -2,11 +2,9 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var siteData = require('../../models/SiteData');
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
+
 
 router.post("/getMoto",function(req,res){
 siteData.findOne({},(err,data)=>{

@@ -6,6 +6,8 @@ var app = express();
 var path = require('path');
 var https = require('https');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
 // load configs
 var serverConfig = require('./configs/server');
 var router = require('./configs/router');
@@ -14,6 +16,8 @@ var privateKey  = fs.readFileSync(httpsConfigs.key, 'utf8');
 var certificate = fs.readFileSync(httpsConfigs.certification, 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 var dbConfig = require('./configs/db.js');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 // enable configs
 // enable compression
 app.use(compression());

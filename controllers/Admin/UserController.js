@@ -2,7 +2,6 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 var jwtConfig = require('../../configs/jwt');
@@ -10,8 +9,6 @@ var jwtPrivate = fs.readFileSync(jwtConfig.private);
 var User = require('../../models/User');
 var recaptchaChecker = require('../Shared/RecaptchaChecker');
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
 router.post("/login",(req,res)=>{
   if(!req.body.username || !req.body.password|| !req.body.recaptcha)
       return res.status(400).send();
