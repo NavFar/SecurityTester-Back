@@ -10,11 +10,11 @@ var checker = function(recaptchaResponse,err,next){
       }},
       function(error,response,body){
         if(error){
-          err();
+          return err();
         }
         if(!JSON.parse(body).success)
-          err();
-        next();
+          return err();
+        return next();
       });
 }
 module.exports = checker;
