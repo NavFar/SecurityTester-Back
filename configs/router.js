@@ -9,6 +9,7 @@ var router = {
   app.use(this.apiPrefix+'/app/pageContent',require(path.join(this.controllers,this.app,"PageContent",'PageContentController')));
   app.use(this.apiPrefix+'/app/siteData',require(path.join(this.controllers,this.app,'SiteDataController')));
   app.use(this.apiPrefix+'/app/test',require(path.join(this.controllers,this.app,'TestController')));
+  app.use(this.apiPrefix+'/app/result',require(path.join(this.controllers,this.app,'ResultController')));
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //add middleware to handle jwt
   var jwtMiddleware = require('../middlewares/jwt.js');
