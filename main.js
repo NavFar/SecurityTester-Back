@@ -31,10 +31,10 @@ router.add(app);
 //connect to database
 mongoose.connect('mongodb://'+dbConfig.url+':'+dbConfig.port+'/'+dbConfig.name,{ useNewUrlParser: true });
 //serve front-end files
-app.use(express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester"));
-app.use("*",express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester/index.html"));
-// app.use(express.static(serverConfig.publicDirectoryLocation));
-// app.use("*",express.static(path.join(serverConfig.publicDirectoryLocation,"index.html")));
+// app.use(express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester"));
+// app.use("*",express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester/index.html"));
+app.use(express.static(serverConfig.publicDirectoryLocation));
+app.use("*",express.static(path.join(serverConfig.publicDirectoryLocation,"index.html")));
 
 // start Server
 httpsServer.listen(serverConfig.portNumber,function()
