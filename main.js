@@ -18,6 +18,11 @@ var credentials = {key: privateKey, cert: certificate};
 var dbConfig = require('./configs/db.js');
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+global.socket=[];
+
+//Enable https for server
+var httpsServer= https.createServer(credentials,app);
+var expressWs = require('express-ws')(app,httpsServer);
 // enable configs
 // enable compression
 app.use(compression());
@@ -30,8 +35,7 @@ app.use(express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dis
 app.use("*",express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester/index.html"));
 // app.use(express.static(serverConfig.publicDirectoryLocation));
 // app.use("*",express.static(path.join(serverConfig.publicDirectoryLocation,"index.html")));
-//Enable https for server
-var httpsServer= https.createServer(credentials,app);
+
 // start Server
 httpsServer.listen(serverConfig.portNumber,function()
 {
