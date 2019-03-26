@@ -6,6 +6,9 @@ package-lock.json
 /public
 #configs
 /configs
+#testssl
+/scripts/testssl/testssl.sh
 #except for site configs
 ! /configs/router.js
 ! /configs/server.js
+
