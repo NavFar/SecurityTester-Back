@@ -23,6 +23,7 @@ var afterDone = function(id,score,testName,status,result){
       //notify users about change
       for(let i=0;i<global.socket[id].length;i++)
       {
+        if(global.socket[id][i]&&global.socket[id][i].readyState==1)
         global.socket[id][i].send(JSON.stringify(request));
         if(!anyPending)
           global.socket[id][i].close();

@@ -15,7 +15,9 @@ var httpsConfigs = require('./configs/https');
 var privateKey  = fs.readFileSync(httpsConfigs.key, 'utf8');
 var certificate = fs.readFileSync(httpsConfigs.certification, 'utf8');
 var credentials = {key: privateKey, cert: certificate};
-var dbConfig = require('./configs/db.js');
+var dbConfig = require('./configs/db');
+var queues = require ('./queue/queues')
+queues.init();
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 global.socket=[];
@@ -31,8 +33,6 @@ router.add(app);
 //connect to database
 mongoose.connect('mongodb://'+dbConfig.url+':'+dbConfig.port+'/'+dbConfig.name,{ useNewUrlParser: true });
 //serve front-end files
-// app.use(express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester"));
-// app.use("*",express.static("/home/navidfarahmand/Projects/Angular/SecurityTester/dist/SecurityTester/index.html"));
 app.use(express.static(serverConfig.publicDirectoryLocation));
 app.use("*",express.static(path.join(serverConfig.publicDirectoryLocation,"index.html")));
 

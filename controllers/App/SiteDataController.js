@@ -49,7 +49,9 @@ router.post("/",(req,res)=>{
       responseData.contactUs=data.contactUs.content;
     else
       responseData.contactUs="";
-
+    responseData.lat =data.contactUs.lat;
+    responseData.lng =data.contactUs.lng;
+    responseData.faqs =data.faqs;
     return res.status(200).json(responseData);
     });
   });

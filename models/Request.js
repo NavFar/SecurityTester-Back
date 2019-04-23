@@ -3,8 +3,7 @@ var testSchema = new mongoose.Schema({
 	name:String,
 	status:Number,
 	pass:Boolean,
-	score:String,
-	describtion:String,
+	score:Number,
 	result:{}
 });
 var requestSchema = new  mongoose.Schema({

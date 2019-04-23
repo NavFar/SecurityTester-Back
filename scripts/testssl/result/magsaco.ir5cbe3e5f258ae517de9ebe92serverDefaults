@@ -1,0 +1,10 @@
+{
+          "Invocation"  : "testssl.sh --quiet --warnings=batch --server_defaults --jsonfile-pretty /home/navidfarahmand/Projects/NodeJS/SecurityTester/scripts/testssl/result/magsaco.ir5cbe3e5f258ae517de9ebe92serverDefaults magsaco.ir",
+          "at"          : "ArchLinux:/home/navidfarahmand/Projects/NodeJS/SecurityTester/scripts/testssl/testssl.sh/bin/openssl.Linux.x86_64",
+          "version"     : "3.0rc4 69c1f9b from 2019-03-26",
+          "openssl"     : "OpenSSL 1.0.2-chacha from Jan 18 17:12:17 2019",
+          "startTime"   : "1555971680",
+          "scanResult"  : [
+          ],
+                    "scanTime"  : "Scan interrupted"
+}

@@ -7,9 +7,9 @@ var vulnerabilities= function(job,done){
     var path = require('path');
     var score=0;
     var filePath = path.join(__dirname,"testssl.sh");
-    fileName = path.join(__dirname,fileName);
+    fileName = path.join(__dirname,"result",fileName);
     filePath = path.join(filePath,"testssl.sh");
-     exec(filePath+" --quiet --vulnerable  --jsonfile-pretty "+fileName+" "+job.data.url, (error, stdout, stderr) => {
+     exec(filePath+" --quiet --warnings=batch --vulnerable  --jsonfile-pretty "+fileName+" "+job.data.url, (error, stdout, stderr) => {
        if(error | stderr)
        {
          for(var i=0;i<keys.length;i++){
@@ -42,6 +42,12 @@ var vulnerabilities= function(job,done){
            // overal:''
            pass:false
          };
+         if(raw.scanTime=="Scan interrupted")
+         {
+           result.error.exist=true;
+           result.error.code=3;
+           continue;
+         }
          if(!raw.scanResult[0][keys[i]])
          {
            result.error.exist=true;

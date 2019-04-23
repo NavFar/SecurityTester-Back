@@ -3,6 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var router = express.Router();
 var requestModel = require('../../models/Request');
+var scriptModel = require('../../models/Script');
+
 router.post("/",(req,res)=>{
   if(!req.body.id||!req.body.id.match(/^[0-9a-fA-F]{24}$/))
     return res.status(400).send();
@@ -11,12 +13,22 @@ router.post("/",(req,res)=>{
       return res.status(500).send();
     if(!request)
       return res.status(404).send();
-    res.status(200).json((request));
+    let tests = [];
+    for(let i=0;i<request.pendingOn.length;i++){
+      tests.push(request.pendingOn[i].name);
+    }
+    scriptModel.find({
+      name:{$in:tests}
+    },function(error,scripts){
+      if(error)
+        return res.status(500).send();
+      res.status(200).json({request:request,scripts:scripts});
+    });
   });
 });
 
 router.post("/recent",(req,res)=>{
-  requestModel.find({expose:true,pending:false}).limit(20).sort({end:1}).select({_id:1,url:1,end:1}).exec(
+  requestModel.find({expose:true}).limit(20).sort({end:-1}).select({_id:1,url:1,end:1}).exec(
     (err,requests)=>
     {
       if(err)

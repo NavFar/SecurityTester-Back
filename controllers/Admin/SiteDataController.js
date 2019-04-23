@@ -160,12 +160,71 @@ siteData.findOne({},(err,data)=>{
   return res.status(200).json(data.contactUs);
   });
 });
-
 router.post("/setContactUs",function(req,res){
 siteData.findOne({},(err,data)=>{
   if(err)
     return res.status(500).send();
   data.contactUs=req.body.contactUs;
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
+});
+router.post("/getAllFaqs",function(req,res){
+siteData.findOne({}).select({faqs:1}).exec((err,data)=>{
+  if(err)
+    return res.status(500).send();
+  return res.status(200).json(data.faqs);
+  });
+});
+router.post("/addFaq",function(req,res){
+siteData.findOne({}).select({faqs:1}).exec((err,data)=>{
+  if(err)
+    return res.status(500).send();
+  if(req.body.id=="new"){
+    var faq = {
+      title:req.body.title,
+      question:req.body.question,
+      answer:req.body.answer
+    }
+  data.faqs.push(faq);
+  }else{
+    for(let i=0;i<data.faqs.length;i++){
+      if(data.faqs[i]._id==req.body.id){
+        data.faqs[i].title=req.body.title;
+        data.faqs[i].question=req.body.question;
+        data.faqs[i].answer=req.body.answer;
+      }
+    }
+  }
+  data.save(function(error, newData){
+    if(error)
+      return res.status(500).send();
+    return res.status(200).send();
+    });
+  });
+});
+router.post("/getFaq",function(req,res){
+siteData.findOne({}).select({faqs:1}).exec((err,data)=>{
+  if(err)
+    return res.status(500).send();
+  for(let i=0;i<data.faqs.length;i++){
+    if(data.faqs[i]._id==req.body.id)
+      return res.status(200).json(data.faqs[i]);
+  }
+  return res.status(200).json("");
+  });
+});
+router.post("/deleteFaq",function(req,res){
+siteData.findOne({}).select({faqs:1}).exec((err,data)=>{
+  if(err)
+    return res.status(500).send();
+  for(let i=0;i<data.faqs.length;i++){
+    if(data.faqs[i]._id==req.body.id)
+        data.faqs.splice(i,1);
+  }
   data.save(function(error, newData){
     if(error)
       return res.status(500).send();

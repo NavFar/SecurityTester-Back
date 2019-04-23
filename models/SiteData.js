@@ -31,7 +31,17 @@ var siteDataSchema = new  mongoose.Schema({
     contactUs:{
       show:Boolean,
       content:String,
+      lat:String,
+      lng:String,
     },
+    faqs:[
+      {
+        title:String,
+        question:String,
+        answer:String,
+      }
+    ]
+
 });
 mongoose.model('SiteData',siteDataSchema);
 module.exports =mongoose.model('SiteData');
