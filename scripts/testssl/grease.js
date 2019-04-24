@@ -7,6 +7,7 @@ var grease= function(job,done){
     var path = require('path');
     var score=0;
     var filePath = path.join(__dirname,"testssl.sh");
+    var afterDone = require('../afterDone');
     fileName = path.join(__dirname,"result",fileName);
     filePath = path.join(filePath,"testssl.sh");
      exec(filePath+" --quiet --grease --warnings=batch  --jsonfile-pretty "+fileName+" "+job.data.url, (error, stdout, stderr) => {
@@ -28,8 +29,25 @@ var grease= function(job,done){
        }
        else{
        var fs = require('fs');
-       var raw = JSON.parse(fs.readFileSync(fileName, 'utf8'));
-       for(var i=0;i<keys.length;i++)
+       try{
+         var raw = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+       }
+       catch (e) {
+         var result={
+           name:keys[i],
+           error:{
+             exist:false,
+             desc:"",
+             code:-1
+           },
+           parts:[],
+           // overal:''
+           pass:false
+         };
+         afterDone(job.data.id,"",job.data.name,-1,result);
+         fs.unlinkSync(fileName);
+         return done(null)
+        }       for(var i=0;i<keys.length;i++)
        {
          var result={
            name:keys[i],
@@ -86,7 +104,6 @@ var grease= function(job,done){
 
        }
      }
-     var afterDone = require('../afterDone');
      if(result.error.exist)
        afterDone(job.data.id,"",job.data.name,-1,result);
      else{

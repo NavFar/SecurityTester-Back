@@ -6,6 +6,7 @@ var browserSimulations= function(job,done){
     var fileName = job.data.url+job.data.id+"browserSimulations";
     var path = require('path');
     var score=0;
+    var afterDone = require('../afterDone');
     var filePath = path.join(__dirname,"testssl.sh");
     fileName = path.join(__dirname,"result",fileName);
     filePath = path.join(filePath,"testssl.sh");
@@ -28,7 +29,25 @@ var browserSimulations= function(job,done){
        }
        else{
        var fs = require('fs');
-       var raw = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+       try{
+         var raw = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+       }
+       catch (e) {
+         var result={
+           name:keys[i],
+           error:{
+             exist:false,
+             desc:"",
+             code:-1
+           },
+           parts:[],
+           // overal:''
+           pass:false
+         };
+         afterDone(job.data.id,"",job.data.name,-1,result);
+         fs.unlinkSync(fileName);
+         return done(null)
+        }
        for(var i=0;i<keys.length;i++)
        {
          var result={
@@ -85,7 +104,6 @@ var browserSimulations= function(job,done){
          // result.overal = overal;
        }
      }
-     var afterDone = require('../afterDone');
      if(result.error.exist)
        afterDone(job.data.id,"",job.data.name,-1,result);
      else{
