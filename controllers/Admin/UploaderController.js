@@ -29,19 +29,14 @@ router.post("/getDirectoryContent",function(req,res){
 });
 router.post("/upload",function(req,res){
   var filePath =  path.join(serverConfig.serverDirectoryLocation,req.body.basePath,req.body.name);
-  console.log(filePath)
   if(!req.body.override && fs.existsSync(filePath)){
-    console.log(1)
-    return res.status(409).send();
+    return res.status(400).send();
   }
   var base64File = req.body.file.replace(/^data:.*;base64,/, "");
   fs.writeFile(filePath, base64File, 'base64', function(err) {
     if(err){
-      console.log(2)
-      return res.status(409).json("");
+      return res.status(400).json("");
     }
-    console.log(3)
-
     return res.status(200).json("");
   });
 });
