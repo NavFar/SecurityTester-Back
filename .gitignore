@@ -8,7 +8,7 @@ package-lock.json
 /configs
 #testssl
 /scripts/testssl/testssl.sh
+/scripts/testssl/result
 #except for site configs
 ! /configs/router.js
 ! /configs/server.js
-

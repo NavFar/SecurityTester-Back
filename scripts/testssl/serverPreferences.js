@@ -91,8 +91,8 @@ var serverPreferences= function(job,done){
        afterDone(job.data.id,"",job.data.name,-1,result);
      else{
        afterDone(job.data.id,(score+4)*4,job.data.name,1,result);
-       fs.unlinkSync(fileName);
      }
+     fs.unlinkSync(fileName);
     return done(null)
      });
   };
