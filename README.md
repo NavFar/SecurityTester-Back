@@ -36,7 +36,7 @@ the new script file should be runned on a seprate process and don't block the qu
 
 ## Deploy
 before deployment you should make sure that `mongodb` and `redis` are up and running.
-for deployment you should run `npm install` to install all dependencies after that you need a process manager like `long loop` or `strong loop`. (we use `strong loop`). after installing the `strong loop`.you should run the `slc start`
+for deployment move the front-end build to `/public` and then you should run `npm install` to install all dependencies after that you need a process manager like `long loop` or `strong loop`. (we use `strong loop`). after installing the `strong loop`.you should run the `slc start`
 
 ## Managing
 to manager the running server you should run `slc ctl` that shows all running processes and their's details . if you want to remove the process so the server would be stopped you should run `slc ctl remove <process number>` .
