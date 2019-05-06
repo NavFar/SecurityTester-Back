@@ -3,7 +3,7 @@ var cipherTests= function(job,done){
     var scoreTable = {'OK':1,'INFO':0,'LOW':-1,'MEDIUM':-2,'HIGH':-3,'CRITICAL':-4};
     // var keys = [ 'protocols','grease','ciphers','pfs','serverPreferences','serverDefaults','headerResponse','vulnerabilities','cipherTests','browserSimulations' ];
     var keys = [ 'cipherTests'];
-    var fileName = job.data.url+job.data.id+"cipherTests";
+    var fileName = job.data.id+"cipherTests";
     var path = require('path');
     var score=0;
     afterDone(job.data.id,"",job.data.name,-1,result);

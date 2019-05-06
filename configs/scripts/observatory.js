@@ -1,9 +1,9 @@
 var observatory={
   name:"observatory",
   shortDescribtion:"Check Somethingss",
-  fullDescribtion:"aa",
+  fullDescribtion:"",
   parts:[
-    {name:"content-security-policy",describtion:"ss",recommendation:"bb",link:""},
+    {name:"content-security-policy",describtion:"",recommendation:"bb",link:""},
     {name:"contribute",describtion:"",recommendation:"",link:""},
     {name:"cookies",describtion:"",recommendation:"",link:""},
     {name:"cross-origin-resource-sharing",describtion:"",recommendation:"",link:""},
