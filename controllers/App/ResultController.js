@@ -28,7 +28,7 @@ router.post("/",(req,res)=>{
 });
 
 router.post("/recent",(req,res)=>{
-  requestModel.find({expose:true}).limit(20).sort({end:-1}).select({_id:1,url:1,end:1}).exec(
+  requestModel.find({expose:true,pending:false}).limit(20).sort({end:1}).select({_id:1,url:1,end:1}).exec(
     (err,requests)=>
     {
       if(err)

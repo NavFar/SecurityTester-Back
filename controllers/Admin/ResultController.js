@@ -11,7 +11,7 @@ router.post("/all",function(req,res){
       return res.status(400).send();
   if(req.body.offset<0||req.body.limit<0)
       return res.status(400).send();
-  requestModel.find({}).skip(req.body.offset).limit(req.body.limit).sort({end:-1}).select({_id:1,pendingOn:1,expose:1,url:1,end:1}).exec(
+  requestModel.find({pending:false}).skip(req.body.offset).limit(req.body.limit).sort({end:1}).select({_id:1,pendingOn:1,expose:1,url:1,end:1}).exec(
     (err,requests)=>
     {
       if(err)
