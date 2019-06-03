@@ -3,11 +3,11 @@ var fs = require('fs');
 var express = require('express');
 var compression = require('compression');
 var app = express();
+var helmet = require('helmet');
 var path = require('path');
 var https = require('https');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-
 // load configs
 var serverConfig = require('./configs/server');
 var router = require('./configs/router');
@@ -26,6 +26,8 @@ global.socket=[];
 var httpsServer= https.createServer(credentials,app);
 var expressWs = require('express-ws')(app,httpsServer);
 // enable configs
+//enable helmet
+app.use(helmet());
 // enable compression
 app.use(compression());
 // add api routes

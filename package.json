@@ -16,6 +16,7 @@
     "express": "^4.16.4",
     "express-ws": "^4.0.0",
     "forever": "^0.15.3",
+    "helmet": "^3.18.0",
     "http-errors": "^1.7.2",
     "https": "^1.0.0",
     "ip-regex": "^4.0.0",
@@ -23,6 +24,7 @@
     "mongoose": "^5.4.19",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
+    "uniqid": "^5.0.3",
     "url-exists": "^1.0.3"
   }
 }

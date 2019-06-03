@@ -62,5 +62,8 @@
 "excellent":"عالی",
 "passStatus":"وضعیت قبولی",
 "result":"نتیجه",
-"recommendation":"توصیه امنیتی"
+"recommendation":"توصیه امنیتی",
+"testAgain":"ارزیابی مجدد",
+"printDescDoc":"پرینت گزارش تحلیلی ارزیابی",
+"watchSecDoc":"مشاهده مستندات امن‌سازی"
 }

@@ -23,12 +23,15 @@ if(token)
   jwt.verify(token, publicKey,{ algorithm: 'RS256' }, function(err, decoded) {
     if(!err)
     {
-      User.findById(decoded.id, function (err, user) {
+      User.findOne({ signId: decoded.id }, function (err, user) {
         if(!err&&user)
         {
           res.locals.user=user;
-        }
           next();
+        }
+        else {
+          res.status(401).send();
+        }
       });
     }
     else{
