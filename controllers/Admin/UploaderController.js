@@ -32,6 +32,17 @@ router.post("/upload",function(req,res){
   if(!req.body.override && fs.existsSync(filePath)){
     return res.status(400).send();
   }
+  var allowed = false;
+  var extension="";
+  var mime = req.body.file.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+  if (mime && mime.length) {
+    extension = mime[1];
+    extension = extension.substr(extension.indexOf("/")+1).toLowerCase();
+    allowed = serverConfig.allowedExtensions.indexOf(extension)!=-1;
+  }
+  if(!allowed){
+    return res.status(403).send();
+  }
   var base64File = req.body.file.replace(/^data:.*;base64,/, "");
   fs.writeFile(filePath, base64File, 'base64', function(err) {
     if(err){
